@@ -57,7 +57,7 @@ async function apiRequest(){
                 if(attacksArrayPokemonOne && abilityArrayPokemonOne){
                     // If it does, randomly choose one to use and randomize its array
                     // PRETTY SURE THIS WON'T WORK THE WAY I WANT IT TO?
-                    return `${pokemonOneName} uses data.data[randomNumber1].attackOrAbility[attackOrAbility]`
+                    return `${pokemonOneName} uses ${data.data[randomNumber1].attackOrAbility[attackOrAbility]}`
                 // if it doesn't have both, does it have attacks?
                 }else if(attacksArrayPokemonOne){
                     // if yes then randomize the attack array
@@ -70,6 +70,7 @@ async function apiRequest(){
                     console.log('I dont even know what happened man')
                 }
             }
+            pokemonOneMoves()
         }
     }catch(error){
         console.log(error) //catch and print any errors
