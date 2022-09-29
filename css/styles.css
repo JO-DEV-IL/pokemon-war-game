@@ -4,8 +4,20 @@
     padding: 0;
 }
 
+body{
+    background: url('https://i.ibb.co/K6Zn2zx/background.jpg');
+    background-size: 200%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 header{
     text-align: center;
+    padding: 25px;
+    color: white;
+}
+header h1{
+    margin-bottom: 30px;
 }
 
 #pokemonStage{
@@ -18,4 +30,5 @@ header{
 
 button{
     font-size: 20px;
+    padding: 10px;
 }

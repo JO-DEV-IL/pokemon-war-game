@@ -1,5 +1,5 @@
 // Button listener
-document.querySelector('button').addEventListener('click',apiRequest)
+document.querySelector('button').addEventListener('click', apiRequest)
 
 async function apiRequest(){
     try{
