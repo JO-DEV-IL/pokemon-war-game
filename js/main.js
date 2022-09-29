@@ -29,30 +29,30 @@ async function apiRequest(){
             
             function moveCheckP1(){
                 if(data.data[randomNumber1].abilities && data.data[randomNumber1].attacks){
-                    console.log('Pokemon has both abilities and attacks')
+                    return
                 }else if(!data.data[randomNumber1].abilities){
-                    console.log('Pokemon does not have any abilities')
+                    return
                 }
             }
-            moveCheckP1()
             
             // Randomize moveset
-            // function pokemon1Moveset(){
-            //     // Turns choices into an array
-            //     const movesetArrays = [hasAbilitiesP1, hasAttacksP1]
-            //     return Math.floor(Math.random() * movesetArrays.length)
-            // }
-            // pokemon1Moveset()
+            function pokemon1Moveset(){
+                // const resultOfMoveCheckp1 = moveCheckP1()
+                const movesetArrays = ['abilities', 'attacks']
+                return Math.floor(Math.random() * movesetArrays.length)
+            }
             
-            //Randomize element
-            // function pokemon1Element(pokemon1Moveset){
-            //     if(pokemon1Moveset === hasAbilitiesP1){
-            //         return Math.floor(Math.random() * hasAbilitiesP1.length)
-            //     }else if(pokemon1Moveset === hasAttacksP1){
-            //         return Math.floor(Math.random() * hasAttacksP1.length)
-            //     }
-            // }
-            // pokemon1Element()
+            // Randomize element
+            function pokemon1Element(){
+                const resultOfMoveset = pokemon1Moveset()
+                const randomElement = Math.floor(Math.random() * )
+                if(resultOfMoveset === 'abilities'){
+                    return data.data[randomNumber1]
+                }else if(resultOfMoveset === 'attacks'){
+                    return
+                }
+            }
+            pokemon1Element() //result is stored
         }
     }catch(error){
         console.log(error) //catch and print any errors
