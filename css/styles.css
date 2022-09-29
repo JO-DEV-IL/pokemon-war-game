@@ -8,7 +8,6 @@ body{
     background: url('https://i.ibb.co/K6Zn2zx/background.jpg');
     background-size: 200%;
     background-position: center;
-    background-repeat: no-repeat;
 }
 
 header{
@@ -22,19 +21,17 @@ header h1{
 
 #pokemonStage{
     display: flex;
+    color: white;
 }
 #pokemonStage div{
     margin: auto;
     padding: 50px;
 }
 #pokemonBattle{
-    display: flex;
     font-size: 30px;
     color: white;
-}
-#pokemonBattle div{
-    margin: auto;
     background-color: #333;
+    text-align: center;
 }
 
 button{
