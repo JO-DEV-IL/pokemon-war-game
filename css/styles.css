@@ -25,7 +25,16 @@ header h1{
 }
 #pokemonStage div{
     margin: auto;
-    padding: 100px;
+    padding: 50px;
+}
+#pokemonBattle{
+    display: flex;
+    font-size: 30px;
+    color: white;
+}
+#pokemonBattle div{
+    margin: auto;
+    background-color: #333;
 }
 
 button{
