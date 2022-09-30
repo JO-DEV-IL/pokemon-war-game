@@ -5,34 +5,37 @@
 }
 
 body{
-    background: url('https://i.ibb.co/K6Zn2zx/background.jpg');
-    background-size: 100%;
-    background-position: top;
-    background-repeat: no-repeat;
     background-color: #333;
+}
+
+#pokemonStage{
+    background: url('https://i.ibb.co/K6Zn2zx/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 header{
     text-align: center;
     padding: 25px;
-    color: white;
 }
 header h1{
     margin-bottom: 30px;
-}
-
-#pokemonStage{
-    display: flex;
     color: white;
 }
-#pokemonStage div{
+
+#cards{
+    display: flex;
+    color: white;
+    height: 1000px;
+}
+#cards div{
     margin: auto;
     padding: 50px;
 }
 #pokemonBattle{
     font-size: 30px;
     color: white;
-    background-color: #333;
     text-align: center;
 }
 

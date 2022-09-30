@@ -27,32 +27,52 @@ async function apiRequest(){
             const pokemonTwoName = data.data[randomNumber2].name
             pokemonTwoImage.src = data.data[randomNumber2].images.small
             
-            function moveCheckP1(){
-                if(data.data[randomNumber1].abilities && data.data[randomNumber1].attacks){
-                    return
-                }else if(!data.data[randomNumber1].abilities){
-                    return
-                }
-            }
-            
-            // Randomize moveset
-            function pokemon1Moveset(){
-                // const resultOfMoveCheckp1 = moveCheckP1()
+            // Function to coinflip between 'abilities' and 'attacks'
+            function pokemonMoveset(){
                 const movesetArrays = ['abilities', 'attacks']
                 return Math.floor(Math.random() * movesetArrays.length)
             }
-            
-            // Randomize element
-            function pokemon1Element(){
-                const resultOfMoveset = pokemon1Moveset()
-                const randomElement = Math.floor(Math.random() * )
-                if(resultOfMoveset === 'abilities'){
-                    return data.data[randomNumber1]
-                }else if(resultOfMoveset === 'attacks'){
-                    return
+            //result is either 0 or 1
+
+            // Function to check if pokemon has both attacks and abilities or if no abilities
+            function moveCheckP1(){
+                if(data.data[randomNumber1].abilities && data.data[randomNumber1].attacks){
+                    return true
+                }else if(!data.data[randomNumber1].abilities){
+                    return false
                 }
             }
-            pokemon1Element() //result is stored
+            //result is either true or false
+
+            // Function to put it all together
+            function turnP1(){
+                const resultOfMoveset = pokemonMoveset() //0 or 1
+                const resultOfMoveCheck = moveCheckP1() //true or false
+                
+                // ISSUE: THESE PATHS ARE TECHNICALLY NOT ARRAYS, SO THEY CAN'T USE ARRAY LENGTH? //
+                const abilityArray = data.data[randomNumber1].abilities
+                const attackArray = data.data[randomNumber1].attacks
+                
+                const randomElementAbility = () => {
+                    if(!data.data[randomNumber1].abilities){
+                        console.log('No abilities')
+                    }else{
+                        return Math.floor(Math.random() * abilityArray.length)
+                    }
+                }
+                const randomElementAttack = Math.floor(Math.random() * attackArray.length)
+                
+                if(resultOfMoveCheck === true)
+                    if(resultOfMoveset === 1){
+                        return data.data[randomNumber1].attacks[randomElementAttack].name
+                    }else if(resultOfMoveset === 0){
+                        return data.data[randomNumber1].abilities[randomElementAbility].name
+                }else if(resultOfMoveset === false){
+                    return data.data[randomNumber1].attacks[randomElementAttack].name
+                }
+            }
+            const resultOfTurnP1 = turnP1()
+            document.querySelector('#pokemon1move1').innerText = `${pokemonOneName} used ${resultOfTurnP1}!`
         }
     }catch(error){
         console.log(error) //catch and print any errors
