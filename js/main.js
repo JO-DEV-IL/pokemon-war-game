@@ -14,7 +14,7 @@ async function apiRequest(){
             // Randomize pokemon cards and assign variables
             const randomNumber1 = Math.floor(Math.random() * 250)
             const randomNumber2 = Math.floor(Math.random() * 250)
-            console.log(data.data[randomNumber1])
+            // console.log(data.data[randomNumber1])
             // console.log(data.data[randomNumber2])
 
             // Pokemon 1 data
@@ -26,53 +26,74 @@ async function apiRequest(){
             const pokemonTwoImage = document.querySelector('#p2-img')
             const pokemonTwoName = data.data[randomNumber2].name
             pokemonTwoImage.src = data.data[randomNumber2].images.small
-            
-            // Function to coinflip between 'abilities' and 'attacks'
-            function pokemonMoveset(){
-                const movesetArrays = ['abilities', 'attacks']
-                return Math.floor(Math.random() * movesetArrays.length)
-            }
-            //result is either 0 or 1
 
+            
             // Function to check if pokemon has both attacks and abilities or if no abilities
             function moveCheckP1(){
                 if(data.data[randomNumber1].abilities && data.data[randomNumber1].attacks){
                     return true
-                }else if(!data.data[randomNumber1].abilities){
+                }else if(!data.data[randomNumber1].abilities && data.data[randomNumber1].attacks){
+                    return false
+                }
+            }
+            
+            function moveCheckP2(){
+                if(data.data[randomNumber2].abilities && data.data[randomNumber2].attacks){
+                    return true
+                }else if(!data.data[randomNumber2].abilities && data.data[randomNumber2].attacks){
                     return false
                 }
             }
             //result is either true or false
 
+            
             // Function to put it all together
             function turnP1(){
-                const resultOfMoveset = pokemonMoveset() //0 or 1
                 const resultOfMoveCheck = moveCheckP1() //true or false
-                
-                // ISSUE: THESE PATHS ARE TECHNICALLY NOT ARRAYS, SO THEY CAN'T USE ARRAY LENGTH? //
-                const abilityArray = data.data[randomNumber1].abilities
-                const attackArray = data.data[randomNumber1].attacks
-                
-                const randomElementAbility = () => {
-                    if(!data.data[randomNumber1].abilities){
-                        console.log('No abilities')
-                    }else{
-                        return Math.floor(Math.random() * abilityArray.length)
+                const coinToss1 = Math.floor(Math.random() * 2)
+                // console.log(`The coin flipped to ${coinToss}`)
+
+                if(resultOfMoveCheck === false){
+                    return data.data[randomNumber1].attacks[0].name
+                }else if(resultOfMoveCheck === true){
+                    if(coinToss1 === 0){
+                        return data.data[randomNumber1].abilities[0].name
+                    }else if(coinToss1 === 1){
+                        return data.data[randomNumber1].attacks[0].name
                     }
                 }
-                const randomElementAttack = Math.floor(Math.random() * attackArray.length)
-                
-                if(resultOfMoveCheck === true)
-                    if(resultOfMoveset === 1){
-                        return data.data[randomNumber1].attacks[randomElementAttack].name
-                    }else if(resultOfMoveset === 0){
-                        return data.data[randomNumber1].abilities[randomElementAbility].name
-                }else if(resultOfMoveset === false){
-                    return data.data[randomNumber1].attacks[randomElementAttack].name
+            }
+
+            function turnP2(){
+                const resultOfMoveCheck = moveCheckP2() //true or false
+                const coinToss2 = Math.floor(Math.random() * 2)
+                // console.log(`The coin flipped to ${coinToss}`)
+
+                if(resultOfMoveCheck === false){
+                    return data.data[randomNumber2].attacks[0].name
+                }else if(resultOfMoveCheck === true){
+                    if(coinToss2 === 0){
+                        return data.data[randomNumber2].abilities[0].name
+                    }else if(coinToss2 === 1){
+                        return data.data[randomNumber2].attacks[0].name
+                    }
                 }
             }
             const resultOfTurnP1 = turnP1()
+            const resultOfTurnP2 = turnP2()
             document.querySelector('#pokemon1move1').innerText = `${pokemonOneName} used ${resultOfTurnP1}!`
+            document.querySelector('#pokemon2move1').innerText = `${pokemonTwoName} used ${resultOfTurnP2}!`
+
+            function randomWinner(){
+                const result = Math.floor(Math.random() * 2)
+                if(result === 0){
+                    return `${pokemonOneName} has fainted! ${pokemonTwoName} wins the battle!`
+                }else{
+                    return `${pokemonTwoName} has fainted! ${pokemonOneName} wins the battle!`
+                }
+            }
+            
+            document.querySelector('#winner').innerText = randomWinner()
         }
     }catch(error){
         console.log(error) //catch and print any errors
