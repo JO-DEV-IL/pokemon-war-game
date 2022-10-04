@@ -8,36 +8,41 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    
-    <section id="pokemonStage">
-        <header>
-            <h1>Pokemon War Game</h1>
-            <button>Battle!</button>
-        </header>
-        
-        <div id="cards">
-            <div>
-                <h2>YOU</h2>
-                <img src="" id="p1-img">
-            </div>
+    <section class="container">
+        <section id="pokemonStage">
+            <header>
+                <img src="img/title-pwg.png" alt="title">
+                
+                <p>API provided at: https://pokemontcg.io/</p>
+                <p>Press the Battle! button to start a randomized battle between two pokemon cards!</p>
+                <button>Battle! (disabled)</button>
+            </header>
             
-            <div>
-                <h2>TRAINER</h2>
-                <img src="" id="p2-img">
+            <div id="cards">
+                <div>
+                    <h2>YOU (test)</h2>
+                    <img src="https://images.pokemontcg.io/ex9/4.png" alt="test card 1">
+                    <!-- <img src="" id="p1-img"> -->
+                </div>
+                
+                <div>
+                    <h2>TRAINER (test)</h2>
+                    <img src="https://images.pokemontcg.io/gym2/2.png" alt="test pokemon 2">
+                    <!-- <img src="" id="p2-img"> -->
+                </div>
             </div>
-        </div>
+        </section>
+    
+        <section id="pokemonBattle">
+            <div>
+                <p id="pokemon1move1"></p>
+                <p id="pokemon2move1"></p>
+            </div>
+            <div>
+                <h2 id="winner"></h2>
+            </div>
+        </section>
     </section>
-
-    <section id="pokemonBattle">
-        <div>
-            <p id="pokemon1move1"></p>
-            <p id="pokemon2move1"></p>
-        </div>
-        <div>
-            <h2 id="winner"></h2>
-        </div>
-    </section>
-
 
     <script src="js/main.js"></script>
 </body>

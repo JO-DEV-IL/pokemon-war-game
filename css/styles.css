@@ -2,22 +2,23 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 
 body{
-    background-color: #333;
+    background-color: #4CAF50;
 }
 
-#pokemonStage{
+/* #pokemonStage{
     background: url('https://i.ibb.co/K6Zn2zx/background.jpg');
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-}
+} */
 
 header{
     text-align: center;
-    padding: 25px;
+    color: whitesmoke;
 }
 header h1{
     margin-bottom: 30px;
@@ -28,7 +29,6 @@ header h1{
 #cards{
     display: flex;
     color: white;
-    height: 1000px;
 }
 #cards div{
     margin: auto;
@@ -41,6 +41,18 @@ header h1{
 }
 
 button{
-    font-size: 50px;
-    padding: 10px;
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 35px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+.container{
+    padding: 200px;
 }
