@@ -29,63 +29,63 @@ async function apiRequest(){
 
             
             // Function to check if pokemon has both attacks and abilities or if no abilities
-            // function moveCheckP1(){
-            //     if(data.data[randomNumber1].abilities && data.data[randomNumber1].attacks){
-            //         return true
-            //     }else if(!data.data[randomNumber1].abilities && data.data[randomNumber1].attacks){
-            //         return false
-            //     }
-            // }
-            
-            // function moveCheckP2(){
-            //     if(data.data[randomNumber2].abilities && data.data[randomNumber2].attacks){
-            //         return true
-            //     }else if(!data.data[randomNumber2].abilities && data.data[randomNumber2].attacks){
-            //         return false
-            //     }
-            // }
-            //result is either true or false
+            function moveCheckP1(){
+                if(data.data[randomNumber1].abilities && data.data[randomNumber1].attacks){
+                    return true
+                }else if(!data.data[randomNumber1].abilities && data.data[randomNumber1].attacks){
+                    return false
+                }
+            }
+            function moveCheckP2(){
+                if(data.data[randomNumber2].abilities && data.data[randomNumber2].attacks){
+                    return true
+                }else if(!data.data[randomNumber2].abilities && data.data[randomNumber2].attacks){
+                    return false
+                }
+            }
+            // result is either true or false
 
             
             // Function to put it all together
-            // function turnP1(){
-            //     const resultOfMoveCheck = moveCheckP1() //true or false
-            //     const coinToss1 = Math.floor(Math.random() * 2)
-            //     // console.log(`The coin flipped to ${coinToss}`)
+            function turnP1(){
+                const resultOfMoveCheck = moveCheckP1() //true or false
+                const coinToss1 = Math.floor(Math.random() * 2)
 
-            //     if(resultOfMoveCheck === false){
-            //         return data.data[randomNumber1].attacks[0].name
-            //     }else if(resultOfMoveCheck === true){
-            //         if(coinToss1 === 0){
-            //             return data.data[randomNumber1].abilities[0].name
-            //         }else if(coinToss1 === 1){
-            //             return data.data[randomNumber1].attacks[0].name
-            //         }
-            //     }
-            // }
+                if(resultOfMoveCheck === false){
+                    return data.data[randomNumber1].attacks[0].name
+                }else if(resultOfMoveCheck === true){
+                    if(coinToss1 === 0){
+                        return data.data[randomNumber1].abilities[0].name
+                    }else if(coinToss1 === 1){
+                        return data.data[randomNumber1].attacks[0].name
+                    }
+                }
+            }
+            function turnP2(){
+                const resultOfMoveCheck = moveCheckP2() //true or false
+                const coinToss2 = Math.floor(Math.random() * 2)
 
-            // function turnP2(){
-            //     const resultOfMoveCheck = moveCheckP2() //true or false
-            //     const coinToss2 = Math.floor(Math.random() * 2)
-            //     // console.log(`The coin flipped to ${coinToss}`)
-
-            //     if(resultOfMoveCheck === false){
-            //         return data.data[randomNumber2].attacks[0].name
-            //     }else if(resultOfMoveCheck === true){
-            //         if(coinToss2 === 0){
-            //             return data.data[randomNumber2].abilities[0].name
-            //         }else if(coinToss2 === 1){
-            //             return data.data[randomNumber2].attacks[0].name
-            //         }
-            //     }
-            // }
+                if(resultOfMoveCheck === false){
+                    return data.data[randomNumber2].attacks[0].name
+                }else if(resultOfMoveCheck === true){
+                    if(coinToss2 === 0){
+                        return data.data[randomNumber2].abilities[0].name
+                    }else if(coinToss2 === 1){
+                        return data.data[randomNumber2].attacks[0].name
+                    }
+                }
+            }
             
+
+
             // Handle moves in DOM
-            // const resultOfTurnP1 = turnP1()
-            // const resultOfTurnP2 = turnP2()
-            // document.querySelector('#pokemon1move1').innerText = `${pokemonOneName} used ${resultOfTurnP1}!`
-            // document.querySelector('#pokemon2move1').innerText = `${pokemonTwoName} used ${resultOfTurnP2}!`
+            const resultOfTurnP1 = turnP1()
+            const resultOfTurnP2 = turnP2()
+            document.querySelector('#pokemon1move1').innerText = `${pokemonOneName} used ${resultOfTurnP1}!`
+            document.querySelector('#pokemon2move1').innerText = `${pokemonTwoName} used ${resultOfTurnP2}!`
+           
             
+
             // Check cards for weaknesses and return value
             function checkWeaknessesP1(){
                 if(!data.data[randomNumber1].weaknesses){
@@ -162,14 +162,57 @@ async function apiRequest(){
             
 
             // Randomize winner based on certain conditions
-            // function randomWinner(){
-            //     const result = Math.floor(Math.random() * 2)
-            //     if(result === 0){
-            //         return `${pokemonOneName} has fainted! ${pokemonTwoName} wins the battle!`
-            //     }else{
-            //         return `${pokemonTwoName} has fainted! ${pokemonOneName} wins the battle!`
-            //     }
-            // }
+            
+            // Check advantages
+            function checkConditions(){
+                if(p2IsWeaktoP1 === false && p1IsWeakToP2 === false){
+                    return 'noAdvantages'
+                }else if(p1IsWeakToP2){
+                    return array.push('Pokemon 2')
+                }else{
+                    return array.push('Pokemon 1')
+                }
+            }
+            
+            function handleWinner(){
+                //Result into variable
+                const result = checkConditions()
+                const pokemonArray = ['Pokemon 1','Pokemon 2']
+                const randomWinner = Math.floor(Math.random() * array.length)
+                
+                //if no advantages
+                if(result === 'noAdvantages'){
+                    if(randomWinner === 0){
+                        console.log('Pokemon 1 has won the battle!')
+                    }else{
+                        console.log('Pokemon 2 has won the battle!')
+                    }
+                
+                //if p1 is weak to p2
+                }else if(p1IsWeakToP2){
+                    if(randomWinner === 0){
+                        console.log('Pokemon 1 has won the battle without an advantage!')
+                    }else{
+                        console.log('Pokemon 2 has won the battle with an advantage!')
+                    }
+                
+                //if p2 is weak to p1
+                }else if(p2IsWeaktoP1){
+                    if(randomWinner === 1){
+                        console.log('Pokemon 2 has won the battle without an advantage!')
+                    }else{
+                        console.log('Pokemon 1 has won the battle with an advantage!')
+                    }
+                }
+            }
+            handleWinner()
+            
+            
+            
+            
+            
+            
+            
             // document.querySelector('#winner').innerText = randomWinner()
         }
     }catch(error){
