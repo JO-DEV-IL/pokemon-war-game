@@ -14,8 +14,8 @@
                 <img src="img/title-pwg.png" alt="title">
                 
                 <p>API provided at: https://pokemontcg.io/</p>
-                <p>Press the Battle! button to start a randomized battle between two pokemon cards!</p>
-                <button>Battle! (disabled)</button>
+                <p>Press the button to randomize two pokemon cards to send into battle!</p>
+                <button id="iChooseYou">I Choose You! (disabled)</button>
             </header>
             
             <div id="cards">
@@ -38,9 +38,18 @@
         </section>
     
         <section id="pokemonBattle">
-            <div>
-                <p id="pokemon1move1"></p>
-                <p id="pokemon2move1"></p>
+            <div id="battle-button">
+                <button id="startBattle">Battle! (disabled)</button>
+            </div>
+            <div id="battle-container">
+                <div id="battle-text">
+                    <p id="pokemon1move1">Test</p>
+                    <p id="pokemon2move1">Test</p>
+                    <p id="">Test</p>
+                    <p id="">Test</p>
+                    <p id="">Test</p>
+                    <p id="">Test</p>
+                </div>
             </div>
             <div>
                 <h2 id="winner"></h2>

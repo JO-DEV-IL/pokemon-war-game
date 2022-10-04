@@ -1,5 +1,6 @@
 // Button listener
-// document.querySelector('button').addEventListener('click', apiRequest)
+// document.querySelector('#iChooseYou').addEventListener('click', apiRequest)
+// document.querySelector('#startBattle').addEventListener('click', startBattle)
 
 async function apiRequest(){
     try{

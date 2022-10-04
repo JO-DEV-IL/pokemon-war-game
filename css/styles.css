@@ -32,11 +32,23 @@ header p{
     margin: auto;
     padding: 50px;
 }
-#pokemonBattle{
-    font-size: 30px;
-    color: white;
+
+#battle-button{
     text-align: center;
-    background-image: url('img/pkm-text-box');
+}
+#battle-container{
+    background: url('https://github.com/JO-DEV-IL/pokemon-war-game/blob/main/img/pkm-text-box.png?raw=true');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 475px;
+    width: 1500px;
+    background-color: whitesmoke;
+    margin: auto;
+}
+#battle-text{
+   margin-left: 75px;
+   font-size: 30px;
+   border: 2px solid black;
 }
 
 button{
