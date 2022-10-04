@@ -20,10 +20,8 @@ header{
     text-align: center;
     color: whitesmoke;
 }
-header h1{
-    margin-bottom: 30px;
-    color: white;
-    font-size: 75px;
+header p{
+    margin-bottom: 15px;
 }
 
 #cards{
@@ -54,5 +52,5 @@ button{
 }
 
 .container{
-    padding: 200px;
+    padding: 100px;
 }
