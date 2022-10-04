@@ -36,6 +36,7 @@ header p{
     font-size: 30px;
     color: white;
     text-align: center;
+    background-image: url('img/pkm-text-box');
 }
 
 button{
