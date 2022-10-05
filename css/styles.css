@@ -40,8 +40,9 @@ header p{
     background: url('https://github.com/JO-DEV-IL/pokemon-war-game/blob/main/img/pkm-text-box.png?raw=true');
     background-repeat: no-repeat;
     background-position: center;
+    background-size: contain;
     height: 475px;
-    width: 1500px;
+    max-width: 100%;
     background-color: whitesmoke;
     margin: auto;
 }
